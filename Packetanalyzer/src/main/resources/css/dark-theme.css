@@ -1,0 +1,355 @@
+/*
+ * LAN Packet Analyzer — Dark Theme
+ */
+
+.app-root {
+    -fx-font-family: "Segoe UI", "Inter", sans-serif;
+    -fx-font-size: 13px;
+    -fx-background-color: #0F172A;
+    -fx-text-fill: #E2E8F0;
+}
+
+.toolbar {
+    -fx-background-color: #1E293B;
+    -fx-padding: 12 16 12 16;
+    -fx-spacing: 10;
+    -fx-border-color: #334155;
+    -fx-border-width: 0 0 1 0;
+}
+
+.toolbar-label {
+    -fx-text-fill: #94A3B8;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+.stats-row {
+    -fx-background-color: #0F172A;
+    -fx-padding: 12 16 12 16;
+    -fx-spacing: 12;
+    -fx-border-color: #334155;
+    -fx-border-width: 0 0 1 0;
+}
+
+.stat-card {
+    -fx-background-color: #1E293B;
+    -fx-background-radius: 8;
+    -fx-border-color: #334155;
+    -fx-border-radius: 8;
+    -fx-border-width: 1;
+    -fx-padding: 10 16 10 16;
+    -fx-min-width: 96;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 6, 0, 0, 1);
+}
+
+.stat-card-title {
+    -fx-text-fill: #94A3B8;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+}
+
+.stat-card-value {
+    -fx-text-fill: #F8FAFC;
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+}
+
+.stat-card-total .stat-card-value { -fx-text-fill: #60A5FA; }
+.stat-card-tcp .stat-card-value { -fx-text-fill: #60A5FA; }
+.stat-card-udp .stat-card-value { -fx-text-fill: #4ADE80; }
+.stat-card-ipv4 .stat-card-value { -fx-text-fill: #38BDF8; }
+.stat-card-ipv6 .stat-card-value { -fx-text-fill: #A78BFA; }
+
+.stat-secondary {
+    -fx-background-color: #1E293B;
+    -fx-background-radius: 8;
+    -fx-border-color: #334155;
+    -fx-border-radius: 8;
+    -fx-border-width: 1;
+    -fx-padding: 10 16 10 16;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 6, 0, 0, 1);
+}
+
+.stat-secondary-value {
+    -fx-text-fill: #E2E8F0;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-font-family: "Consolas", monospace;
+}
+
+.filter-bar {
+    -fx-background-color: #1E293B;
+    -fx-padding: 10 16 10 16;
+    -fx-spacing: 10;
+    -fx-border-color: #334155;
+    -fx-border-width: 0 0 1 0;
+}
+
+.filter-field {
+    -fx-background-color: #0F172A;
+    -fx-text-fill: #E2E8F0;
+    -fx-prompt-text-fill: #64748B;
+    -fx-border-color: #334155;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 8 12 8 12;
+}
+
+.filter-field:focused {
+    -fx-border-color: #2563EB;
+    -fx-effect: dropshadow(gaussian, rgba(37, 99, 235, 0.25), 8, 0, 0, 0);
+}
+
+.filter-match-label {
+    -fx-text-fill: #94A3B8;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+.button {
+    -fx-background-color: #1E293B;
+    -fx-text-fill: #E2E8F0;
+    -fx-border-color: #334155;
+    -fx-border-width: 1;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 7 14 7 14;
+    -fx-cursor: hand;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+.button:hover {
+    -fx-background-color: #334155;
+    -fx-border-color: #475569;
+}
+
+.button.primary {
+    -fx-background-color: #2563EB;
+    -fx-text-fill: #FFFFFF;
+    -fx-border-color: #2563EB;
+}
+
+.button.primary:hover {
+    -fx-background-color: #1D4ED8;
+}
+
+.button.danger {
+    -fx-background-color: #1E293B;
+    -fx-text-fill: #F87171;
+    -fx-border-color: #7F1D1D;
+}
+
+.button.danger:hover {
+    -fx-background-color: #450A0A;
+}
+
+.button:disabled {
+    -fx-opacity: 0.45;
+}
+
+.interface-combo {
+    -fx-background-color: #0F172A;
+    -fx-border-color: #334155;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+}
+
+.interface-combo .list-cell {
+    -fx-text-fill: #E2E8F0;
+    -fx-background-color: transparent;
+}
+
+.combo-box-popup .list-view {
+    -fx-background-color: #1E293B;
+    -fx-border-color: #334155;
+}
+
+.combo-box-popup .list-cell:hover {
+    -fx-background-color: #334155;
+}
+
+.settings-checkbox {
+    -fx-text-fill: #E2E8F0;
+}
+
+.settings-checkbox .box {
+    -fx-background-color: #0F172A;
+    -fx-border-color: #475569;
+}
+
+.packet-table {
+    -fx-background-color: #1E293B;
+    -fx-border-color: #334155;
+    -fx-table-cell-border-color: #334155;
+}
+
+.packet-table .column-header-background {
+    -fx-background-color: #0F172A;
+}
+
+.packet-table .column-header .label {
+    -fx-text-fill: #94A3B8;
+    -fx-font-weight: bold;
+    -fx-font-size: 11px;
+}
+
+.packet-table .filler {
+    -fx-background-color: #0F172A;
+    -fx-border-color: #334155;
+}
+
+.packet-table .table-row-cell {
+    -fx-background-color: #1E293B;
+    -fx-text-fill: #E2E8F0;
+    -fx-cell-size: 30;
+}
+
+.packet-table .table-row-cell:odd {
+    -fx-background-color: #172033;
+}
+
+.packet-table .table-row-cell:selected {
+    -fx-background-color: #1E3A8A;
+    -fx-text-fill: #FFFFFF;
+}
+
+.packet-table .table-row-cell:hover {
+    -fx-background-color: #334155;
+}
+
+.packet-table .table-cell {
+    -fx-text-fill: #E2E8F0;
+    -fx-font-family: "Consolas", monospace;
+    -fx-font-size: 12px;
+}
+
+.table-row-tcp { -fx-background-color: #172554; }
+.table-row-tcp:odd { -fx-background-color: #1E3A5F; }
+.table-row-udp { -fx-background-color: #14532D; }
+.table-row-udp:odd { -fx-background-color: #166534; }
+.table-row-icmp { -fx-background-color: #431407; }
+.table-row-icmp:odd { -fx-background-color: #7C2D12; }
+.table-row-tcp:selected,
+.table-row-udp:selected,
+.table-row-icmp:selected {
+    -fx-background-color: #1E3A8A;
+}
+
+.details-panel {
+    -fx-background-color: #0F172A;
+    -fx-padding: 8 12 8 12;
+}
+
+.section-label {
+    -fx-text-fill: #94A3B8;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+.details-empty {
+    -fx-text-fill: #64748B;
+}
+
+.detail-section-card {
+    -fx-background-color: #1E293B;
+    -fx-border-color: #334155;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-padding: 10 14 10 14;
+}
+
+.detail-section-title { -fx-text-fill: #60A5FA; }
+.detail-section-title.title-ipv4 { -fx-text-fill: #38BDF8; }
+.detail-section-title.title-ipv6 { -fx-text-fill: #A78BFA; }
+.detail-section-title.title-tcp { -fx-text-fill: #60A5FA; }
+.detail-section-title.title-udp { -fx-text-fill: #4ADE80; }
+.detail-section-title.title-icmp { -fx-text-fill: #FB923C; }
+.detail-section-title.title-ethernet,
+.detail-section-title.title-hex { -fx-text-fill: #94A3B8; }
+
+.detail-section-body {
+    -fx-fill: #E2E8F0;
+    -fx-font-family: "Consolas", monospace;
+    -fx-font-size: 12px;
+}
+
+.detail-hex-area {
+    -fx-control-inner-background: #0F172A;
+    -fx-text-fill: #E2E8F0;
+    -fx-border-color: #334155;
+    -fx-background-color: #0F172A;
+}
+
+.detail-hex-area .content {
+    -fx-background-color: #0F172A;
+}
+
+.main-split {
+    -fx-background-color: #0F172A;
+}
+
+.main-split > .split-pane-divider {
+    -fx-background-color: #334155;
+}
+
+.status-bar {
+    -fx-background-color: #1E293B;
+    -fx-border-color: #334155;
+    -fx-border-width: 1 0 0 0;
+    -fx-padding: 8 16 8 16;
+}
+
+.status-text {
+    -fx-text-fill: #94A3B8;
+    -fx-font-size: 11px;
+}
+
+.status-separator {
+    -fx-background-color: #334155;
+    -fx-min-width: 1;
+    -fx-max-width: 1;
+    -fx-min-height: 14;
+}
+
+.status-indicator {
+    -fx-background-color: #475569;
+}
+
+.status-indicator.capturing {
+    -fx-background-color: #16A34A;
+}
+
+.version-label {
+    -fx-text-fill: #64748B;
+    -fx-font-size: 10px;
+}
+
+.settings-field-label {
+    -fx-text-fill: #94A3B8;
+    -fx-font-weight: bold;
+}
+
+.settings-field {
+    -fx-background-color: #0F172A;
+    -fx-text-fill: #E2E8F0;
+    -fx-border-color: #334155;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+}
+
+.settings-hint {
+    -fx-text-fill: #64748B;
+}
+
+.settings-error {
+    -fx-text-fill: #F87171;
+}
+
+.dialog-pane {
+    -fx-background-color: #1E293B;
+}
+
+.dialog-pane > .content.label {
+    -fx-text-fill: #E2E8F0;
+}

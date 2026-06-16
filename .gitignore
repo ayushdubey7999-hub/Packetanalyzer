@@ -1,0 +1,40 @@
+# Maven
+target/
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+pom.xml.bak
+
+# IDE
+.idea/
+*.iml
+*.iws
+*.ipr
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Build
+out/
+build/
+dist/
+
+# Java
+*.class
+*.log
+
+# Gradle
+.gradle/
+gradle-app.setting
+
+# OS
+Thumbs.db
+.DS_Store

@@ -1,0 +1,532 @@
+/*
+ * LAN Packet Analyzer — Design System Tokens
+ * ─────────────────────────────────────────
+ * Background:      #F8FAFC
+ * Surface:          #FFFFFF
+ * Border:           #E2E8F0
+ * Primary:          #2563EB
+ * Success:          #16A34A
+ * Warning:          #EA580C
+ * Text Primary:     #0F172A
+ * Text Secondary:   #475569
+ * Selected Row:     #DBEAFE
+ * Hover Row:        #EFF6FF
+ *
+ * Protocol:
+ *   TCP  #2563EB   UDP  #16A34A   ICMP #EA580C
+ *   IPv4 #0284C7   IPv6 #7C3AED
+ */
+
+.app-root {
+    -fx-font-family: "Segoe UI", "Inter", sans-serif;
+    -fx-font-size: 13px;
+    -fx-background-color: #F8FAFC;
+    -fx-text-fill: #0F172A;
+}
+
+/* ── Toolbar ─────────────────────────────────────────────── */
+
+.toolbar {
+    -fx-background-color: #FFFFFF;
+    -fx-padding: 12 16 12 16;
+    -fx-spacing: 10;
+    -fx-border-color: #E2E8F0;
+    -fx-border-width: 0 0 1 0;
+}
+
+.toolbar-label {
+    -fx-text-fill: #475569;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+/* ── Statistics dashboard ─────────────────────────────────── */
+
+.stats-row {
+    -fx-background-color: #F8FAFC;
+    -fx-padding: 12 16 12 16;
+    -fx-spacing: 12;
+    -fx-border-color: #E2E8F0;
+    -fx-border-width: 0 0 1 0;
+}
+
+.stat-card {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 8;
+    -fx-border-color: #E2E8F0;
+    -fx-border-radius: 8;
+    -fx-border-width: 1;
+    -fx-padding: 10 16 10 16;
+    -fx-min-width: 96;
+    -fx-effect: dropshadow(gaussian, rgba(15, 23, 42, 0.04), 6, 0, 0, 1);
+}
+
+.stat-card-title {
+    -fx-text-fill: #475569;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+}
+
+.stat-card-value {
+    -fx-text-fill: #0F172A;
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+}
+
+.stat-card-total .stat-card-value {
+    -fx-text-fill: #2563EB;
+}
+
+.stat-card-tcp .stat-card-value {
+    -fx-text-fill: #2563EB;
+}
+
+.stat-card-udp .stat-card-value {
+    -fx-text-fill: #16A34A;
+}
+
+.stat-card-ipv4 .stat-card-value {
+    -fx-text-fill: #0284C7;
+}
+
+.stat-card-ipv6 .stat-card-value {
+    -fx-text-fill: #7C3AED;
+}
+
+.stat-secondary {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 8;
+    -fx-border-color: #E2E8F0;
+    -fx-border-radius: 8;
+    -fx-border-width: 1;
+    -fx-padding: 10 16 10 16;
+    -fx-effect: dropshadow(gaussian, rgba(15, 23, 42, 0.04), 6, 0, 0, 1);
+}
+
+.stat-secondary-value {
+    -fx-text-fill: #0F172A;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-font-family: "Consolas", "Segoe UI", monospace;
+}
+
+/* ── Filter / search bar ──────────────────────────────────── */
+
+.filter-bar {
+    -fx-background-color: #FFFFFF;
+    -fx-padding: 10 16 10 16;
+    -fx-spacing: 10;
+    -fx-border-color: #E2E8F0;
+    -fx-border-width: 0 0 1 0;
+}
+
+.filter-field {
+    -fx-background-color: #F8FAFC;
+    -fx-text-fill: #0F172A;
+    -fx-prompt-text-fill: #94A3B8;
+    -fx-border-color: #E2E8F0;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 8 12 8 12;
+    -fx-font-size: 13px;
+}
+
+.filter-field:focused {
+    -fx-border-color: #2563EB;
+    -fx-background-color: #FFFFFF;
+    -fx-effect: dropshadow(gaussian, rgba(37, 99, 235, 0.12), 8, 0, 0, 0);
+}
+
+.filter-match-label {
+    -fx-text-fill: #475569;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+.filter-clear {
+    -fx-padding: 7 12 7 12;
+}
+
+/* ── Buttons ──────────────────────────────────────────────── */
+
+.button {
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #0F172A;
+    -fx-border-color: #E2E8F0;
+    -fx-border-width: 1;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 7 14 7 14;
+    -fx-cursor: hand;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+.button:hover {
+    -fx-background-color: #EFF6FF;
+    -fx-border-color: #BFDBFE;
+}
+
+.button:pressed {
+    -fx-background-color: #DBEAFE;
+}
+
+.button.primary {
+    -fx-background-color: #2563EB;
+    -fx-text-fill: #FFFFFF;
+    -fx-border-color: #2563EB;
+}
+
+.button.primary:hover {
+    -fx-background-color: #1D4ED8;
+    -fx-border-color: #1D4ED8;
+}
+
+.button.danger {
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #DC2626;
+    -fx-border-color: #FECACA;
+}
+
+.button.danger:hover {
+    -fx-background-color: #FEF2F2;
+    -fx-border-color: #FCA5A5;
+}
+
+.button:disabled {
+    -fx-opacity: 0.45;
+    -fx-cursor: default;
+}
+
+/* ── ComboBox ─────────────────────────────────────────────── */
+
+.interface-combo {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #E2E8F0;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+}
+
+.interface-combo .list-cell {
+    -fx-text-fill: #0F172A;
+    -fx-background-color: transparent;
+}
+
+.combo-box-popup .list-view {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #E2E8F0;
+}
+
+.combo-box-popup .list-cell:hover {
+    -fx-background-color: #EFF6FF;
+}
+
+/* ── Settings dialog ──────────────────────────────────────── */
+
+.settings-checkbox {
+    -fx-text-fill: #0F172A;
+}
+
+.settings-checkbox .box {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #CBD5E1;
+}
+
+.settings-info {
+    -fx-text-fill: #475569;
+    -fx-font-size: 13px;
+}
+
+.dialog-pane {
+    -fx-background-color: #FFFFFF;
+}
+
+/* ── Packet table ─────────────────────────────────────────── */
+
+.packet-table {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #E2E8F0;
+    -fx-table-cell-border-color: #F1F5F9;
+}
+
+.packet-table .column-header-background {
+    -fx-background-color: #F8FAFC;
+}
+
+.packet-table .column-header {
+    -fx-background-color: transparent;
+    -fx-border-color: #E2E8F0;
+    -fx-size: 36;
+}
+
+.packet-table .column-header .label {
+    -fx-text-fill: #475569;
+    -fx-font-weight: bold;
+    -fx-font-size: 11px;
+}
+
+.packet-table .filler {
+    -fx-background-color: #F8FAFC;
+    -fx-border-color: #E2E8F0;
+}
+
+.packet-table .table-row-cell {
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #0F172A;
+    -fx-border-color: transparent;
+    -fx-cell-size: 30;
+}
+
+.packet-table .table-row-cell:odd {
+    -fx-background-color: #F8FAFC;
+}
+
+.packet-table .table-row-cell:selected {
+    -fx-background-color: #DBEAFE;
+    -fx-text-fill: #0F172A;
+}
+
+.packet-table .table-row-cell:hover {
+    -fx-background-color: #EFF6FF;
+}
+
+.packet-table .table-row-cell:selected:hover {
+    -fx-background-color: #DBEAFE;
+}
+
+.packet-table .table-cell {
+    -fx-padding: 4 10 4 10;
+    -fx-font-size: 12px;
+    -fx-font-family: "Consolas", "Segoe UI", monospace;
+    -fx-text-fill: #0F172A;
+}
+
+.packet-table .placeholder .label {
+    -fx-text-fill: #94A3B8;
+    -fx-font-size: 13px;
+}
+
+/* Protocol row tints (light) */
+.table-row-tcp {
+    -fx-background-color: #EFF6FF;
+}
+
+.table-row-tcp:odd {
+    -fx-background-color: #E0EDFF;
+}
+
+.table-row-udp {
+    -fx-background-color: #F0FDF4;
+}
+
+.table-row-udp:odd {
+    -fx-background-color: #DCFCE7;
+}
+
+.table-row-icmp {
+    -fx-background-color: #FFF7ED;
+}
+
+.table-row-icmp:odd {
+    -fx-background-color: #FFEDD5;
+}
+
+.table-row-tcp:selected,
+.table-row-udp:selected,
+.table-row-icmp:selected {
+    -fx-background-color: #DBEAFE;
+}
+
+/* ── Packet details panel ─────────────────────────────────── */
+
+.details-panel {
+    -fx-background-color: #F8FAFC;
+    -fx-padding: 8 12 8 12;
+}
+
+.section-label {
+    -fx-text-fill: #475569;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-padding: 0 0 4 2;
+}
+
+.details-scroll {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+    -fx-border-color: transparent;
+}
+
+.details-scroll > .viewport {
+    -fx-background-color: transparent;
+}
+
+.details-content {
+    -fx-spacing: 10;
+    -fx-padding: 2 4 8 4;
+}
+
+.details-empty {
+    -fx-text-fill: #94A3B8;
+    -fx-font-size: 13px;
+    -fx-padding: 16 8 16 8;
+}
+
+.detail-section-card {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 8;
+    -fx-border-color: #E2E8F0;
+    -fx-border-radius: 8;
+    -fx-border-width: 1;
+    -fx-padding: 10 14 10 14;
+    -fx-spacing: 6;
+    -fx-effect: dropshadow(gaussian, rgba(15, 23, 42, 0.04), 4, 0, 0, 1);
+}
+
+.detail-section-title {
+    -fx-text-fill: #2563EB;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+.detail-section-title.title-ethernet {
+    -fx-text-fill: #475569;
+}
+
+.detail-section-title.title-ipv4 {
+    -fx-text-fill: #0284C7;
+}
+
+.detail-section-title.title-ipv6 {
+    -fx-text-fill: #7C3AED;
+}
+
+.detail-section-title.title-tcp {
+    -fx-text-fill: #2563EB;
+}
+
+.detail-section-title.title-udp {
+    -fx-text-fill: #16A34A;
+}
+
+.detail-section-title.title-icmp {
+    -fx-text-fill: #EA580C;
+}
+
+.detail-section-title.title-hex {
+    -fx-text-fill: #475569;
+}
+
+.detail-section-body {
+    -fx-fill: #0F172A;
+    -fx-font-size: 12px;
+    -fx-font-family: "Consolas", "Courier New", monospace;
+}
+
+.detail-hex-area {
+    -fx-control-inner-background: #F8FAFC;
+    -fx-text-fill: #0F172A;
+    -fx-font-family: "Consolas", "Courier New", monospace;
+    -fx-font-size: 11px;
+    -fx-border-color: #E2E8F0;
+    -fx-background-color: #F8FAFC;
+    -fx-background-radius: 4;
+}
+
+.detail-hex-area .content {
+    -fx-background-color: #F8FAFC;
+}
+
+/* ── Split pane ───────────────────────────────────────────── */
+
+.main-split {
+    -fx-background-color: #F8FAFC;
+    -fx-padding: 0;
+}
+
+.main-split > .split-pane-divider {
+    -fx-background-color: #E2E8F0;
+    -fx-padding: 0 3 0 3;
+}
+
+/* ── Status bar ───────────────────────────────────────────── */
+
+.status-bar {
+    -fx-background-color: #FFFFFF;
+    -fx-padding: 8 16 8 16;
+    -fx-spacing: 6;
+    -fx-border-color: #E2E8F0;
+    -fx-border-width: 1 0 0 0;
+}
+
+.status-text {
+    -fx-text-fill: #475569;
+    -fx-font-size: 11px;
+}
+
+.status-separator {
+    -fx-min-width: 1;
+    -fx-max-width: 1;
+    -fx-min-height: 14;
+    -fx-background-color: #E2E8F0;
+}
+
+.status-indicator {
+    -fx-min-width: 8;
+    -fx-min-height: 8;
+    -fx-max-width: 8;
+    -fx-max-height: 8;
+    -fx-background-radius: 4;
+    -fx-background-color: #CBD5E1;
+}
+
+.status-indicator.capturing {
+    -fx-background-color: #16A34A;
+    -fx-effect: dropshadow(gaussian, rgba(22, 163, 74, 0.45), 4, 0, 0, 0);
+}
+
+.version-label {
+    -fx-text-fill: #94A3B8;
+    -fx-font-size: 10px;
+    -fx-font-family: "Consolas", monospace;
+}
+
+/* ── Settings dialog ──────────────────────────────────────── */
+
+.settings-grid {
+    -fx-background-color: transparent;
+}
+
+.settings-field-label {
+    -fx-text-fill: #475569;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+.settings-field {
+    -fx-background-color: #F8FAFC;
+    -fx-text-fill: #0F172A;
+    -fx-border-color: #E2E8F0;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 6 10 6 10;
+}
+
+.settings-hint {
+    -fx-text-fill: #64748B;
+    -fx-font-size: 11px;
+}
+
+.settings-error {
+    -fx-text-fill: #DC2626;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+.dialog-pane {
+    -fx-background-color: #FFFFFF;
+}
+
+.dialog-pane > .content.label {
+    -fx-text-fill: #0F172A;
+}
