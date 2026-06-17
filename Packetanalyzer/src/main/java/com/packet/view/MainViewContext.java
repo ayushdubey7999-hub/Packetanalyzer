@@ -6,6 +6,8 @@ import javafx.collections.transformation.FilteredList;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -29,6 +31,10 @@ public final class MainViewContext {
     public final Button exportButton;
     public final Button importButton;
     public final Button settingsButton;
+
+    public final MenuBar menuBar;
+    public final MenuItem saveSessionMenuItem;
+    public final MenuItem openSessionMenuItem;
 
     public final TableView<PacketInfo> packetTable;
     public final ObservableList<PacketInfo> masterPackets;
@@ -64,6 +70,9 @@ public final class MainViewContext {
             Button exportButton,
             Button importButton,
             Button settingsButton,
+            MenuBar menuBar,
+            MenuItem saveSessionMenuItem,
+            MenuItem openSessionMenuItem,
             TableView<PacketInfo> packetTable,
             ObservableList<PacketInfo> masterPackets,
             FilteredList<PacketInfo> filteredPackets,
@@ -93,6 +102,9 @@ public final class MainViewContext {
         this.exportButton = exportButton;
         this.importButton = importButton;
         this.settingsButton = settingsButton;
+        this.menuBar = menuBar;
+        this.saveSessionMenuItem = saveSessionMenuItem;
+        this.openSessionMenuItem = openSessionMenuItem;
         this.packetTable = packetTable;
         this.masterPackets = masterPackets;
         this.filteredPackets = filteredPackets;

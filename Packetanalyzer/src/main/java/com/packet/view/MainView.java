@@ -12,6 +12,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 import com.packet.view.components.PacketDetailsPanel;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TableView;
@@ -53,6 +56,13 @@ public final class MainView {
         Button exportButton = UiComponents.toolbarButton("Export");
         Button settingsButton = UiComponents.toolbarButton("Settings");
 
+        MenuItem saveSessionMenuItem = new MenuItem("Save Session");
+        MenuItem openSessionMenuItem = new MenuItem("Open Session");
+        Menu fileMenu = new Menu("File");
+        fileMenu.getItems().addAll(saveSessionMenuItem, openSessionMenuItem);
+        MenuBar menuBar = new MenuBar(fileMenu);
+        menuBar.getStyleClass().add("app-menu-bar");
+
         TableView<PacketInfo> packetTable = PacketTableBuilder.build(filteredPackets);
 
         PacketDetailsPanel detailsPanel = new PacketDetailsPanel();
@@ -70,7 +80,7 @@ public final class MainView {
         Region captureIndicator = new Region();
         captureIndicator.getStyleClass().add("status-indicator");
 
-        Label sessionModeLabel = UiComponents.statusText("Live Capture");
+        Label sessionModeLabel = UiComponents.statusText(com.packet.model.SessionMode.LIVE_CAPTURE);
         sessionModeLabel.getStyleClass().add("session-mode-label");
 
         Label captureStatusLabel = UiComponents.statusText("Ready");
@@ -170,6 +180,9 @@ public final class MainView {
                         exportButton,
                         importButton,
                         settingsButton,
+                        menuBar,
+                        saveSessionMenuItem,
+                        openSessionMenuItem,
                         packetTable,
                         masterPackets,
                         filteredPackets,
@@ -192,7 +205,7 @@ public final class MainView {
 
         BorderPane root = new BorderPane();
         root.getStyleClass().add("app-root");
-        root.setTop(new VBox(toolbar, statsRow, filterBar));
+        root.setTop(new VBox(menuBar, toolbar, statsRow, filterBar));
         root.setCenter(centerSplit);
         root.setBottom(statusBar);
         root.getProperties().put("viewContext", ctx);

@@ -46,6 +46,20 @@ public final class CaptureStatistics {
         icmp.set(0);
     }
 
+    /** Restores counters from a saved session without re-scanning packet rows. */
+    public void restoreFrom(SessionStatisticsSnapshot snapshot) {
+        if (snapshot == null) {
+            reset();
+            return;
+        }
+        total.set(snapshot.getTotal());
+        tcp.set(snapshot.getTcp());
+        udp.set(snapshot.getUdp());
+        ipv4.set(snapshot.getIpv4());
+        ipv6.set(snapshot.getIpv6());
+        icmp.set(snapshot.getIcmp());
+    }
+
     public long getTotal() {
         return total.get();
     }
