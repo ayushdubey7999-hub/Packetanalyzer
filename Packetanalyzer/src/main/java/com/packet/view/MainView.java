@@ -48,6 +48,7 @@ public final class MainView {
         Button startButton = UiComponents.primaryButton("Start");
         Button stopButton = UiComponents.dangerButton("Stop");
         stopButton.setDisable(true);
+        Button importButton = UiComponents.toolbarButton("Import");
         Button clearButton = UiComponents.toolbarButton("Clear");
         Button exportButton = UiComponents.toolbarButton("Export");
         Button settingsButton = UiComponents.toolbarButton("Settings");
@@ -69,6 +70,9 @@ public final class MainView {
         Region captureIndicator = new Region();
         captureIndicator.getStyleClass().add("status-indicator");
 
+        Label sessionModeLabel = UiComponents.statusText("Live Capture");
+        sessionModeLabel.getStyleClass().add("session-mode-label");
+
         Label captureStatusLabel = UiComponents.statusText("Ready");
         Label interfaceStatusLabel = UiComponents.statusText("Interface: —");
         Label packetCountLabel = UiComponents.statusText("0 / 0 packets");
@@ -86,6 +90,7 @@ public final class MainView {
                         UiComponents.horizontalSpacer(),
                         startButton,
                         stopButton,
+                        importButton,
                         clearButton,
                         exportButton,
                         settingsButton);
@@ -140,6 +145,7 @@ public final class MainView {
                 new HBox(
                         14,
                         captureIndicator,
+                        sessionModeLabel,
                         captureStatusLabel,
                         sep1,
                         interfaceStatusLabel,
@@ -162,6 +168,7 @@ public final class MainView {
                         stopButton,
                         clearButton,
                         exportButton,
+                        importButton,
                         settingsButton,
                         packetTable,
                         masterPackets,
@@ -176,6 +183,7 @@ public final class MainView {
                         rateLabel,
                         timerLabel,
                         captureIndicator,
+                        sessionModeLabel,
                         captureStatusLabel,
                         interfaceStatusLabel,
                         packetCountLabel,

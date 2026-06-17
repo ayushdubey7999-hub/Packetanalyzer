@@ -27,6 +27,7 @@ public final class MainViewContext {
     public final Button stopButton;
     public final Button clearButton;
     public final Button exportButton;
+    public final Button importButton;
     public final Button settingsButton;
 
     public final TableView<PacketInfo> packetTable;
@@ -45,6 +46,7 @@ public final class MainViewContext {
     public final Label timerLabel;
 
     public final Region captureIndicator;
+    public final Label sessionModeLabel;
     public final Label captureStatusLabel;
     public final Label interfaceStatusLabel;
     public final Label packetCountLabel;
@@ -60,6 +62,7 @@ public final class MainViewContext {
             Button stopButton,
             Button clearButton,
             Button exportButton,
+            Button importButton,
             Button settingsButton,
             TableView<PacketInfo> packetTable,
             ObservableList<PacketInfo> masterPackets,
@@ -74,6 +77,7 @@ public final class MainViewContext {
             Label rateLabel,
             Label timerLabel,
             Region captureIndicator,
+            Label sessionModeLabel,
             Label captureStatusLabel,
             Label interfaceStatusLabel,
             Label packetCountLabel,
@@ -87,6 +91,7 @@ public final class MainViewContext {
         this.stopButton = stopButton;
         this.clearButton = clearButton;
         this.exportButton = exportButton;
+        this.importButton = importButton;
         this.settingsButton = settingsButton;
         this.packetTable = packetTable;
         this.masterPackets = masterPackets;
@@ -101,6 +106,7 @@ public final class MainViewContext {
         this.rateLabel = rateLabel;
         this.timerLabel = timerLabel;
         this.captureIndicator = captureIndicator;
+        this.sessionModeLabel = sessionModeLabel;
         this.captureStatusLabel = captureStatusLabel;
         this.interfaceStatusLabel = interfaceStatusLabel;
         this.packetCountLabel = packetCountLabel;

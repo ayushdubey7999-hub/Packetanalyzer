@@ -3,6 +3,7 @@ package com.packet.controller;
 import com.packet.capture.NetworkInterfaceCatalog;
 import com.packet.capture.PacketCaptureService;
 import com.packet.capture.PacketDetailsPrinter;
+import com.packet.capture.PacketImportService;
 import com.packet.model.CaptureStatistics;
 import com.packet.model.PacketInfo;
 import com.packet.model.SettingsModel;
@@ -45,6 +46,7 @@ public final class MainController {
 
     private final Stage stage;
     private final PacketCaptureService captureService = new PacketCaptureService();
+    private final PacketImportService importService = new PacketImportService();
     private final PacketParser packetParser = new PacketParser();
     private final CaptureFileManager fileManager = new CaptureFileManager();
     private final CaptureStatistics statistics = new CaptureStatistics();
@@ -132,6 +134,7 @@ public final class MainController {
     private void wireButtons() {
         ui.startButton.setOnAction(e -> startCapture());
         ui.stopButton.setOnAction(e -> stopCapture());
+        ui.importButton.setOnAction(e -> importCaptureFile());
         ui.clearButton.setOnAction(e -> clearPackets());
         ui.exportButton.setOnAction(e -> exportVisiblePackets());
         ui.settingsButton.setOnAction(e -> openSettings());
@@ -164,6 +167,7 @@ public final class MainController {
         statistics.reset();
         captureStartedAt = Instant.now();
         packetsAtLastTick = 0;
+        ui.sessionModeLabel.setText("Live Capture");
 
         if (settings().isAutoSave()) {
             try {
@@ -226,6 +230,78 @@ public final class MainController {
         Platform.runLater(() -> addPacketToTable(row));
     }
 
+    private void importCaptureFile() {
+        FileChooser chooser = new FileChooser();
+        chooser.setTitle("Open Capture File");
+        chooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Capture files", "*.pcap", "*.pcapng"),
+                new FileChooser.ExtensionFilter("PCAP files", "*.pcap"),
+                new FileChooser.ExtensionFilter("PCAPNG files", "*.pcapng"));
+
+        java.io.File file = chooser.showOpenDialog(stage);
+        if (file == null) {
+            return;
+        }
+
+        stopCapture();
+        clearPackets();
+        ui.sessionModeLabel.setText("Imported Capture");
+        ui.captureStatusLabel.setText("Opening file…");
+        ui.fileStatusLabel.setText("File: " + shortenPath(file.getAbsolutePath()));
+        ui.importButton.setDisable(true);
+        ui.startButton.setDisable(true);
+        ui.stopButton.setDisable(true);
+
+        importService.importCapture(
+                file.toPath(),
+                progress ->
+                        Platform.runLater(
+                                () -> {
+                                    ui.captureStatusLabel.setText(progress.message());
+                                    ui.packetCountLabel.setText(progress.packetCount() + " packets imported");
+                                }),
+                packets -> Platform.runLater(() -> addImportedPackets(packets)),
+                summary ->
+                        Platform.runLater(
+                                () -> {
+                                    ui.sessionModeLabel.setText(summary.mode());
+                                    ui.captureStatusLabel.setText(
+                                            "Imported " + summary.packetCount() + " packets");
+                                    ui.importButton.setDisable(false);
+                                    ui.startButton.setDisable(false);
+                                    ui.stopButton.setDisable(true);
+                                }),
+                error ->
+                        Platform.runLater(
+                                () -> {
+                                    ui.importButton.setDisable(false);
+                                    ui.startButton.setDisable(false);
+                                    ui.stopButton.setDisable(true);
+                                    showError("Could not import capture file.", error);
+                                    setCaptureStatus("Import failed");
+                                }));
+    }
+
+    private void addImportedPackets(List<PacketInfo> packets) {
+        if (packets == null || packets.isEmpty()) {
+            return;
+        }
+
+        for (PacketInfo packet : packets) {
+            statistics.record(packet);
+            ui.masterPackets.add(0, packet);
+            while (ui.masterPackets.size() > settings().maxTableRows()) {
+                ui.masterPackets.remove(ui.masterPackets.size() - 1);
+            }
+        }
+
+        refreshLiveStats();
+        updatePacketCounts();
+        if (settings().isAutoScroll()) {
+            ui.packetTable.scrollTo(0);
+        }
+    }
+
     private void addPacketToTable(PacketInfo row) {
         int maxRows = settings().maxTableRows();
         ui.masterPackets.add(0, row);
@@ -245,6 +321,7 @@ public final class MainController {
         ui.stopButton.setDisable(true);
         ui.captureIndicator.getStyleClass().remove("capturing");
         setCaptureStatus("Stopped");
+        ui.importButton.setDisable(false);
     }
 
     private void shutdown() {
@@ -264,6 +341,7 @@ public final class MainController {
         refreshStatLabels(0);
         updatePacketCounts();
         setCaptureStatus("Packets cleared");
+        ui.sessionModeLabel.setText("Live Capture");
     }
 
     private void saveCaptureToFolder() {
